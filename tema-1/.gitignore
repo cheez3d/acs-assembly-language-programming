@@ -1,0 +1,9 @@
+/.debug
+/tema1
+/vmchecker.zip
+
+/.vscode/settings.json
+
+/checker/__pycache__/
+
+/tema1.o
